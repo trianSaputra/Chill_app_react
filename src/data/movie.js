@@ -1,14 +1,13 @@
 import DontLookUp from "../assets/continueWatchingImage/DontLookUp.png";
 import BlueLock from "../assets/continueWatchingImage/BlueLock.png";
-import AllOfUsAreDead from "../assets/continueWatchingImage/AllOfUsAreDead.png";
-import Otto from "../assets/continueWatchingImage/Otto.png";
+import AllOfUsAreDeadLandscape from "../assets/continueWatchingImage/AllOfUsAreDead.png";
+import OttoLandscape from "../assets/continueWatchingImage/Otto.png";
 
 import allofusaredead from "../assets/portrait-images/allofusaredead.png";
 import suzume from "../assets/portrait-images/suzume.png";
 import Sonic from "../assets/portrait-images/Sonic.png";
 import bigHero from "../assets/portrait-images/bigHero.png";
 import jurassic from "../assets/portrait-images/jurassic.png";
-
 import guardianofgalaxy from "../assets/portrait-images/guardianofgalaxy.png";
 import quantummania from "../assets/portrait-images/quantummania.png";
 import ottoPortrait from "../assets/portrait-images/ottoPortrait.png";
@@ -16,102 +15,180 @@ import littlemermaid from "../assets/portrait-images/littlemermaid.png";
 import thetomorrowwar from "../assets/portrait-images/thetomorrowwar.png";
 import dutyafterschool from "../assets/portrait-images/dutyafterschool.png";
 
-export const continueWatchingMovies = [
+export const movies = [
+  // ===========================
+  // Continue Watching
+  // ===========================
   {
-    image: DontLookUp,
+    id: 1,
     title: "Don't Look Up",
-    rating: 4.5,
+    image: DontLookUp,
+    rating: 4.2,
+    genre: "Comedy",
+    category: "continue",
   },
   {
-    image: BlueLock,
+    id: 2,
     title: "Blue Lock",
+    image: BlueLock,
     rating: 4.8,
+    genre: "Anime",
+    category: "continue",
   },
   {
-    image: AllOfUsAreDead,
+    id: 3,
     title: "All Of Us Are Dead",
+    image: AllOfUsAreDeadLandscape,
     rating: 4.5,
+    genre: "Horror",
+    category: "continue",
   },
   {
-    image: Otto,
+    id: 4,
     title: "A Man Called Otto",
+    image: OttoLandscape,
     rating: 4.8,
+    genre: "Drama",
+    category: "continue",
   },
-];
 
-export const topRatingMovies = [
+  // ===========================
+  // Top Rating
+  // ===========================
   {
-    image: allofusaredead,
+    id: 5,
     title: "All Of Us Are Dead",
+    image: allofusaredead,
+    rating: 4.9,
+    genre: "Horror",
+    category: "topRating",
   },
   {
-    image: suzume,
+    id: 6,
     title: "Suzume",
+    image: suzume,
+    rating: 4.8,
+    genre: "Anime",
+    category: "topRating",
   },
   {
-    image: Sonic,
+    id: 7,
     title: "Sonic",
+    image: Sonic,
+    rating: 4.6,
+    genre: "Animation",
+    category: "topRating",
   },
   {
-    image: bigHero,
+    id: 8,
     title: "Big Hero 6",
+    image: bigHero,
+    rating: 4.7,
+    genre: "Animation",
+    category: "topRating",
   },
   {
-    image: littlemermaid,
+    id: 9,
     title: "The Little Mermaid",
+    image: littlemermaid,
+    rating: 4.6,
+    genre: "Fantasy",
+    category: "topRating",
   },
-];
 
-export const trendingMovies = [
+  // ===========================
+  // Trending
+  // ===========================
   {
-    image: thetomorrowwar,
+    id: 10,
     title: "The Tomorrow War",
+    image: thetomorrowwar,
+    rating: 4.5,
+    genre: "Sci-Fi",
+    category: "trending",
   },
   {
+    id: 11,
+    title: "Quantumania",
     image: quantummania,
-    title: "Quantum Mania",
+    rating: 4.4,
+    genre: "Action",
+    category: "trending",
   },
   {
+    id: 12,
+    title: "Guardian of the Galaxy",
     image: guardianofgalaxy,
-    title: "guardian of the galaxy",
+    rating: 4.8,
+    genre: "Action",
+    category: "trending",
   },
   {
+    id: 13,
+    title: "A Man Called Otto",
     image: ottoPortrait,
-    title: "a man called otto",
+    rating: 4.7,
+    genre: "Drama",
+    category: "trending",
   },
   {
-    image: littlemermaid,
-    title: "The Little Mermaid",
+    id: 14,
+    title: "Jurassic World",
+    image: jurassic,
+    rating: 4.5,
+    genre: "Adventure",
+    category: "trending",
   },
-  {
-    image: bigHero,
-    title: "Big Hero 6",
-  },
-];
 
-export const newReleaseMovies = [
+  // ===========================
+  // New Release
+  // ===========================
   {
-    image: littlemermaid,
+    id: 15,
     title: "The Little Mermaid",
+    image: littlemermaid,
+    rating: 4.6,
+    genre: "Fantasy",
+    category: "newRelease",
   },
   {
-    image: dutyafterschool,
+    id: 16,
     title: "Duty After School",
+    image: dutyafterschool,
+    rating: 4.9,
+    genre: "Action",
+    category: "newRelease",
   },
   {
-    image: allofusaredead,
+    id: 17,
     title: "All Of Us Are Dead",
+    image: allofusaredead,
+    rating: 4.7,
+    genre: "Horror",
+    category: "newRelease",
   },
   {
-    image: suzume,
+    id: 18,
     title: "Suzume",
+    image: suzume,
+    rating: 4.8,
+    genre: "Anime",
+    category: "newRelease",
   },
   {
-    image: Sonic,
+    id: 19,
     title: "Sonic",
+    image: Sonic,
+    rating: 4.5,
+    genre: "Animation",
+    category: "newRelease",
   },
   {
-    image: bigHero,
+    id: 20,
     title: "Big Hero 6",
+    image: bigHero,
+    rating: 4.7,
+    genre: "Animation",
+    category: "newRelease",
   },
 ];

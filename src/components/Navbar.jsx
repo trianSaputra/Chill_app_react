@@ -3,6 +3,7 @@ import chill from "../assets/chill.png";
 import chillIcon from "../assets/chillIcon.png";
 import profileIcon from "../assets/profileIcon.png";
 import { ChevronDown, User, Star, LogOut } from "lucide-react";
+import { Link } from "react-router-dom";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -17,9 +18,9 @@ export default function Navbar() {
         </div>
 
         <div className="flex gap-4 md:gap-20 text-white text-sm md:text-base">
-          <div>Series</div>
-          <div>Films</div>
+          <Link to="/">Home</Link>
           <div>Daftar Saya</div>
+          <Link to="/AdminDashboard">Dashboard</Link>
         </div>
       </div>
       <div className="relative">
