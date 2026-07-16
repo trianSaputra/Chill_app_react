@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { X } from "lucide-react";
+import { uploadImage } from "../../services/cloudinaryService";
 
 export default function MovieForm({ movie, onClose, onSave }) {
   const [formData, setFormData] = useState({
@@ -11,10 +12,14 @@ export default function MovieForm({ movie, onClose, onSave }) {
   });
 
   const [errors, setErrors] = useState({});
+  const [selectedFile, setSelectedFile] = useState(null);
+  const [preview, setPreview] = useState("");
+  const [uploading, setUploading] = useState(false);
 
   useEffect(() => {
     if (movie) {
       setFormData(movie);
+      setPreview(movie.image);
     }
   }, [movie]);
 
@@ -37,10 +42,9 @@ export default function MovieForm({ movie, onClose, onSave }) {
 
     if (!file) return;
 
-    setFormData((prev) => ({
-      ...prev,
-      image: URL.createObjectURL(file),
-    }));
+    setSelectedFile(file);
+
+    setPreview(URL.createObjectURL(file));
 
     setErrors((prev) => ({
       ...prev,
@@ -67,7 +71,7 @@ export default function MovieForm({ movie, onClose, onSave }) {
       newErrors.category = "Kategori wajib dipilih";
     }
 
-    if (!formData.image) {
+    if (!preview) {
       newErrors.image = "Poster wajib dipilih";
     }
 
@@ -76,10 +80,27 @@ export default function MovieForm({ movie, onClose, onSave }) {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (!validateForm()) return;
 
-    onSave(formData);
+    try {
+      setUploading(true);
+
+      let imageUrl = formData.image;
+
+      if (selectedFile) {
+        imageUrl = await uploadImage(selectedFile);
+      }
+
+      await onSave({
+        ...formData,
+        image: imageUrl,
+      });
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setUploading(false);
+    }
   };
 
   return (
@@ -153,22 +174,29 @@ export default function MovieForm({ movie, onClose, onSave }) {
             <option value="newRelease">New Release</option>
           </select>
 
-          <label className="inline-block bg-blue-600 hover:bg-blue-700 cursor-pointer px-5 py-3 rounded-lg">
-            Pilih Poster
+          <label
+            className={`inline-block px-5 py-3 rounded-lg ${
+              uploading
+                ? "bg-gray-500 cursor-not-allowed"
+                : "bg-blue-600 hover:bg-blue-700 cursor-pointer"
+            }`}
+          >
+            {uploading ? "Mengupload..." : "Pilih Poster"}
+
             <input
               type="file"
               accept="image/*"
               onChange={handleImage}
               className="hidden"
+              disabled={uploading}
             />
           </label>
 
           {errors.image && (
             <p className="text-red-500 text-sm mt-2">{errors.image}</p>
           )}
-
-          {formData.image && (
-            <img src={formData.image} className="w-40 rounded-lg" />
+          {preview && (
+            <img src={preview} alt="Preview" className="w-40 rounded-lg" />
           )}
 
           <div className="flex justify-end gap-3">
@@ -181,9 +209,14 @@ export default function MovieForm({ movie, onClose, onSave }) {
 
             <button
               onClick={handleSubmit}
-              className="bg-red-600 px-5 py-2 rounded cursor-pointer"
+              disabled={uploading}
+              className={`px-5 py-2 rounded text-white ${
+                uploading
+                  ? "bg-gray-500 cursor-not-allowed"
+                  : "bg-red-600 hover:bg-red-700 cursor-pointer"
+              }`}
             >
-              Simpan
+              {uploading ? "Mengupload..." : "Simpan"}
             </button>
           </div>
         </div>

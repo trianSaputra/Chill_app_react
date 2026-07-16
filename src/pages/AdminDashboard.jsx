@@ -28,11 +28,11 @@ export default function AdminDashboard({
     setIsOpen(false);
   };
 
-  const handleSave = (movie) => {
+  const handleSave = async (movie) => {
     if (movie.id) {
-      updateMovie(movie);
+      await updateMovie(movie);
     } else {
-      addMovie(movie);
+      await addMovie(movie);
     }
 
     closeForm();
